@@ -54,61 +54,12 @@ type InputAutocompleteProps = {
   onPlaceSelected: (details: GooglePlaceDetail | null) => void;
 };
 
-const generateRandomCoordinates = ({ currentLatitude, currentLongitude }) => {
-  const DELTA = 0.03;
-  const MAX_LATITUDE = currentLatitude + DELTA;
-  const MIN_LATITUDE = currentLatitude - DELTA;
-  const MAX_LONGITUDE = currentLongitude + DELTA;
-  const MIN_LONGITUDE = currentLongitude - DELTA;
-  const latitude = Math.random() * (MAX_LATITUDE - MIN_LATITUDE) + MIN_LATITUDE;
-  const longitude =
-    Math.random() * (MAX_LONGITUDE - MIN_LONGITUDE) + MIN_LONGITUDE;
-  return { latitude, longitude };
-};
-
 const getLatLngDetails = ({ currentLatitude, currentLongitude }) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(toilets.slice(0, 5));
     }, 1000);
   });
-};
-
-function InputAutocomplete({
-  label,
-  placeholder,
-  onPlaceSelected,
-}: InputAutocompleteProps) {
-  return (
-    <>
-      <Text>{label}</Text>
-      <GooglePlacesAutocomplete
-        styles={{ textInput: styles.input }}
-        placeholder={placeholder || ""}
-        fetchDetails
-        onPress={(data, details = null) => {
-          onPlaceSelected(details);
-        }}
-        query={{
-          key: GOOGLE_API_KEY,
-          language: "en-GB",
-          types: "(cities)", // default: 'geocode'
-        }}
-      />
-    </>
-  );
-}
-
-const Flex = () => {
-  const numberOfItems = 8;
-
-  return (
-    <View style={styles.modalContainer}>
-      {[...Array(numberOfItems)].map((_, index) => (
-        <MenuDetail key={index} />
-      ))}
-    </View>
-  );
 };
 
 export default function App() {
@@ -183,12 +134,6 @@ export default function App() {
       setDuration(args.duration);
     }
   };
-
-  const closeModalDetails = () => {
-    setShowDetailsModal(false);
-  };
-
-  const [showAutoCompleteButton, setShowAutoCompleteButton] = useState(false);
 
   const userLocation = useLocation();
 
@@ -265,9 +210,6 @@ export default function App() {
                   title="Your Current Location"
                 />
 
-                {/* {origin && <Marker coordinate={currentLocation} />}
-              {destination && <Marker coordinate={destination} />} */}
-
                 {location && selectedToilet && showDirections && (
                   <MapViewDirections
                     origin={location?.coords}
@@ -307,8 +249,6 @@ export default function App() {
                 justifyContent: "center",
               }}
             >
-              {/* <Text>hi</Te> */}
-
               <Text>Loading...</Text>
             </View>
           )}
@@ -369,34 +309,6 @@ export default function App() {
             ) : null}
           </View>
 
-          {showAutoCompleteButton ? (
-            <View style={styles.searchContainer}>
-              <>
-                {/* <InputAutocomplete
-                label="Origin"
-                onPlaceSelected={(details) => {
-                  onPlaceSelected(details, "origin");
-                }}
-              />
-              <InputAutocomplete
-                label="Destination"
-                onPlaceSelected={(details) => {
-                  onPlaceSelected(details, "destination");
-                }}
-              /> */}
-                {/* <TouchableOpacity style={styles.button} onPress={traceRoute}>
-                <Text style={styles.buttonText}>Trace route</Text>
-              </TouchableOpacity> */}
-                {distance && duration ? (
-                  <View>
-                    <Text>Distance: {distance.toFixed(2)}</Text>
-                    <Text>Duration: {Math.ceil(duration)} min</Text>
-                  </View>
-                ) : null}
-              </>
-            </View>
-          ) : null}
-
           <ToiletListModal
             toilets={selectedToilets}
             visible={showToiletListModal}
@@ -406,26 +318,6 @@ export default function App() {
               setSelectedToilet(toilet);
             }}
           />
-
-          {/* Second Modal */}
-
-          <Modal isOpen={showDetailsModal} onClose={closeModalDetails}>
-            <TouchableOpacity
-              style={styles.fullPageModalContent}
-              activeOpacity={1}
-              onPress={closeModalDetails}
-            >
-              <View style={styles.detailsModalContent}>
-                <Box bg="$rose100" p="$5">
-                  <Text>This is the Box</Text>
-                </Box>
-                <Divider />
-                <Box bg="$primary500" p="$5">
-                  <Text>This is the Box</Text>
-                </Box>
-              </View>
-            </TouchableOpacity>
-          </Modal>
         </View>
       </GluestackUIProvider>
     </GestureHandlerRootView>
