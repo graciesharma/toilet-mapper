@@ -9,16 +9,12 @@ import React, { useEffect, useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
 import * as Location from "expo-location";
 import {
-  Box,
-  CloseIcon,
-  Divider,
   GluestackUIProvider,
   Icon,
-  Modal,
 } from "./components";
 import { config } from "./gluestack-ui.config";
 import { styles } from "./styles";
-import MenuDetail, {
+import  {
   PrimaryDetails,
   ViewDetailsModal,
 } from "./components/Menu/ToiletDetails";
@@ -46,13 +42,7 @@ export const HEIGHT = height;
 
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.02;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-type InputAutocompleteProps = {
-  label: string;
-  placeholder?: string;
-  onPlaceSelected: (details: GooglePlaceDetail | null) => void;
-};
 
 const getLatLngDetails = ({ currentLatitude, currentLongitude }) => {
   return new Promise((resolve) => {
@@ -64,7 +54,6 @@ const getLatLngDetails = ({ currentLatitude, currentLongitude }) => {
 
 export default function App() {
   const [showToiletListModal, setShowToiletListModal] = useState(false);
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
 
   const [showDirections, setShowDirections] = useState(false);
   const [distance, setDistance] = useState(0);
@@ -111,22 +100,7 @@ export default function App() {
     text = JSON.stringify(location);
   }
 
-  const moveTo = async (position: LatLng) => {
-    const camera = await mapRef.current?.getCamera();
-    if (camera) {
-      camera.center = position;
-      mapRef.current?.animateCamera(camera, { duration: 1000 });
-    }
-  };
 
-  const edgePaddingValue = 70;
-
-  const edgePadding = {
-    top: edgePaddingValue,
-    right: edgePaddingValue,
-    bottom: edgePaddingValue,
-    left: edgePaddingValue,
-  };
 
   const traceRouteOnReady = (args: any) => {
     if (args) {
@@ -226,7 +200,7 @@ export default function App() {
                     <Marker
                       key={index}
                       coordinate={marker?.coords}
-                      title={`Marker ass ${index + 1}`}
+                      title={`Marker ${index + 1}`}
                       onPress={() => handleMarkerPress(marker)}
                     >
                       <Icon as={ToiletMarker} />
