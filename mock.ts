@@ -76,7 +76,7 @@ export const toilets = [
   },
   {
     name: "Bishwojyoti Hall Toilet",
-    address: "Bishwojyoti Hall, Thame",
+    address: "Bishwojyoti Hall, Thamel",
     tags: ["Commercial Building"],
     description:
       "A restroom at Bishwojyoti Hall, perfect for event attendees and students.",
@@ -90,7 +90,7 @@ export const toilets = [
     closingTime: "08:00 PM",
   },
   {
-    name: "Tripureshwor Eye Hospital Toilet",
+    name: "Tripureshwor Hospital Toilet",
     address: "Tripureshwor Eye Hospital",
     tags: ["Hospital"],
     description:

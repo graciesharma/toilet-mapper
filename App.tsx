@@ -4,11 +4,10 @@ import {
   GooglePlaceDetail,
   GooglePlacesAutocomplete,
 } from "react-native-google-places-autocomplete";
-import { GOOGLE_API_KEY } from "./environment";
 import React, { useEffect, useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
 import * as Location from "expo-location";
-import { GluestackUIProvider, Icon } from "./components";
+import { EditIcon, GluestackUIProvider, Icon } from "./components";
 import { config } from "./gluestack-ui.config";
 import { styles } from "./styles";
 import {
@@ -21,6 +20,7 @@ import { toilets } from "./mock";
 import {
   ListIcon,
   Map,
+  FilterIcon,
   MapIcon,
   MapPin,
   SearchIcon,
@@ -32,6 +32,9 @@ import ActionSheet from "./components/ActionSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import ToiletListModal from "./components/ToiletListModal";
 import LinkButton from "./components/LinkButton";
+import { GOOGLE_API_KEY } from "./environment";
+import Filter from "./components/Filter/FilterModal";
+import Review from "./components/ReviewModal";
 
 export const { width, height } = Dimensions.get("window");
 
@@ -50,6 +53,8 @@ const getLatLngDetails = ({ currentLatitude, currentLongitude }) => {
 
 export default function App() {
   const [showToiletListModal, setShowToiletListModal] = useState(false);
+  const [showFilterModal, setShowFilterModal] = useState(false);
+  const [showReviewModal, setshowReviewModal] = useState(false);
 
   const [showDirections, setShowDirections] = useState(false);
   const [distance, setDistance] = useState(0);
@@ -111,6 +116,28 @@ export default function App() {
         onPress={() => setShowToiletListModal(true)}
       >
         <Icon as={ListIcon} size="md" color="white" />
+      </TouchableOpacity>
+    );
+  }, []);
+
+  const ViewFilterButton = React.useCallback(() => {
+    return (
+      <TouchableOpacity
+        style={{ ...styles.openModalButton, marginLeft: "auto" }}
+        onPress={() => setShowFilterModal(true)}
+      >
+        <Icon as={FilterIcon} size="md" color="white" />
+      </TouchableOpacity>
+    );
+  }, []);
+
+  const ViewReviewModal = React.useCallback(() => {
+    return (
+      <TouchableOpacity
+        style={{ ...styles.openModalButton, marginLeft: "auto" }}
+        onPress={() => setshowReviewModal(true)}
+      >
+        <Icon as={EditIcon} size="md" color="white" />
       </TouchableOpacity>
     );
   }, []);
@@ -213,8 +240,7 @@ export default function App() {
               <Text>Loading...</Text>
             </View>
           )}
-
-          <ActionSheet
+          <ActionSheet 
             open={showDirections}
             onClose={() => {
               setShowDirections(false);
@@ -224,7 +250,7 @@ export default function App() {
             }}
           >
             <PrimaryDetails {...selectedToilet} />
-            <LinkButton
+            <LinkButton 
               text="View Details"
               onPress={() => setShowDirections(false)}
             ></LinkButton>
@@ -243,10 +269,13 @@ export default function App() {
               />
             </View>
           </ActionSheet>
-
           <View style={styles.buttonsContainer}>
             {selectedToilets?.length > 0 && !showDirections && (
-              <ViewListButton />
+              <>
+                <ViewListButton />
+                <ViewFilterButton />
+                <ViewReviewModal />
+              </>
             )}
 
             {!showDirections ? (
@@ -270,7 +299,6 @@ export default function App() {
               </>
             ) : null}
           </View>
-
           <ToiletListModal
             toilets={selectedToilets}
             visible={showToiletListModal}
@@ -279,6 +307,15 @@ export default function App() {
               setShowToiletListModal(false);
               setSelectedToilet(toilet);
             }}
+          />
+          <Filter
+            visible={showFilterModal}
+            onClose={() => setShowFilterModal(false)}
+          />
+
+          <Review
+            visible={showReviewModal}
+            onClose={() => setshowReviewModal(false)}
           />
         </View>
       </GluestackUIProvider>

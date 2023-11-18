@@ -104,7 +104,7 @@ const styles = {
   },
   sheetContainer: {
     justifyContent: "flex-end",
-    height: Dimensions.get("screen").height / 3,
+    height: Dimensions.get("screen").height / 2.80,
 
     position: "absolute",
     bottom: 0,

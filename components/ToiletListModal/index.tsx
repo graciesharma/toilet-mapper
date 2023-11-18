@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Toilet } from "../../interfaces/Toilet";
-import { Button, CloseIcon } from "../core";
+import { Button, CloseIcon, Divider } from "../core";
 import { MapIcon, MapPin } from "lucide-react-native";
 
 interface ToiletListModalProps {
@@ -27,25 +27,33 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
 }) => {
   return (
     <Modal visible={visible} animationType="slide">
-      <TouchableOpacity
-        onPress={onClose}
+      <View
         style={{
-          alignSelf: "flex-end",
-          top: 10,
-          right: 20,
+          margin: 15,
+          flexDirection: "row",
+          alignItems: "center",
         }}
       >
-        <CloseIcon size="md" color="black" />
-      </TouchableOpacity>
-      <View style={styles.container}>
-        <Text style={styles.title}>Toilet List</Text>
+        <Text style={{ fontSize: 24, fontWeight: "600" }}>Toilet List</Text>
+        <TouchableOpacity
+          onPress={onClose}
+          style={{
+            marginLeft: "auto",
+          }}
+        >
+          <CloseIcon size="md" color="black" />
+        </TouchableOpacity>
+      </View>
 
+      <Divider />
+
+      <View style={styles.container}>
         <FlatList
           data={toilets}
           keyExtractor={(toilet) => toilet.name}
           style={{
             width: "100%",
-            padding: 12,
+            padding: 15,
           }}
           renderItem={({ item }) => (
             <View style={styles.toiletItem}>
@@ -111,13 +119,14 @@ const styles = StyleSheet.create({
     height: 80,
   },
   name: {
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: "500",
   },
   address: {
-    fontSize: 12,
+    fontSize: 14,
   },
   reviews: {
-    fontSize: 10,
+    fontSize: 12,
   },
 });
 

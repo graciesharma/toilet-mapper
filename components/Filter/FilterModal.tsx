@@ -1,0 +1,239 @@
+import React from "react";
+import { Modal, TouchableOpacity, View } from "react-native";
+
+import {
+  Box,
+  Button,
+  CheckIcon,
+  Text,
+  Checkbox,
+  CheckboxIndicator,
+  CheckboxIcon,
+  CheckboxLabel,
+  CheckboxGroup,
+  CloseIcon,
+} from "@gluestack-ui/themed";
+import { AirbnbRating, Rating } from "react-native-ratings";
+
+interface IProps {
+  visible: boolean;
+  onClose: () => void;
+}
+
+const PROXIMITY_WITHIN = [
+  {
+    id: "500m",
+    value: "500",
+    label: "500m",
+  },
+  {
+    id: "1km",
+    value: "1000",
+    label: "1km",
+  },
+];
+
+const ACCESSIBILITY = [
+  {
+    id: "gender",
+    value: "gender neutral",
+    label: "Gender neutral Toilet",
+  },
+  {
+    id: "babyFeeding",
+    value: "babyFeeding",
+    label: "Baby feeding and changing",
+  },
+  {
+    id: "disability",
+    value: "disability",
+    label: "Disabled friendly",
+  },
+  {
+    id: "free",
+    value: "free",
+    label: "Free of charge",
+  },
+  {
+    id: "senior",
+    value: "seniorFriendly",
+    label: "Senior friendly toilet",
+  },
+];
+
+const Filter = ({ visible, onClose }: IProps) => {
+  const [values, setValues] = React.useState([]);
+  return (
+    <Modal visible={visible} animationType="slide" style={{ padding: 20 }}>
+      <Text style={{ margin: 15, fontSize: 20, fontWeight: "600" }}>
+        All Filters
+      </Text>
+      <View style={{ padding: 20 }}>
+        <Box sx={{ marginBottom: 20 }}>
+          <Text sx={{ mb: 10, fontSize: 20, fontWeight: "$bold" }}>
+            Proximity Within
+          </Text>
+          <CheckboxGroup
+            value={values}
+            onChange={(keys) => {
+              setValues(keys);
+            }}
+          >
+            {PROXIMITY_WITHIN.map((value) => (
+              <Checkbox
+                key={value.id}
+                value={value.value}
+                isInvalid={false}
+                isDisabled={false}
+                accessibilityLabel="Select or deselect the checkbox"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "row",
+                  borderWidth: 1,
+                  padding: 10,
+                  borderRadius: 4,
+                  borderColor: "#d1d6e5",
+                  mb: 10,
+                }}
+              >
+                <CheckboxIndicator
+                  mr="$2"
+                  sx={{
+                    height: 20,
+                    width: 20,
+                    borderWidth: 1,
+                    borderRadius: 4,
+                  }}
+                >
+                  <CheckboxIcon
+                    as={CheckIcon}
+                    sx={{
+                      backgroundColor: "#23256A",
+                      color: "white",
+                      marginRight: 20,
+                    }}
+                  />
+                </CheckboxIndicator>
+                <CheckboxLabel sx={{ color: "#0C121D" }}>
+                  {value.label}
+                </CheckboxLabel>
+              </Checkbox>
+            ))}
+          </CheckboxGroup>
+        </Box>
+        <Box>
+          <Text sx={{ mb: 10, fontSize: 20, fontWeight: "$bold" }}>
+            Accesiblity Features
+          </Text>
+          <CheckboxGroup
+            value={values}
+            onChange={(keys) => {
+              setValues(keys);
+            }}
+          >
+            {ACCESSIBILITY.map((value) => (
+              <Checkbox
+                key={value.id}
+                value={value.value}
+                isInvalid={false}
+                isDisabled={false}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "row",
+                  borderWidth: 1,
+                  padding: 10,
+                  borderRadius: 4,
+                  borderColor: "#d1d6e5",
+                  mb: 10,
+                }}
+              >
+                <CheckboxIndicator
+                  mr="$2"
+                  sx={{
+                    height: 20,
+                    width: 20,
+                    borderWidth: 1,
+                    borderRadius: 4,
+                  }}
+                >
+                  <CheckboxIcon
+                    as={CheckIcon}
+                    sx={{
+                      backgroundColor: "#23256A",
+                      color: "white",
+                      marginRight: 20,
+                    }}
+                  />
+                </CheckboxIndicator>
+                <CheckboxLabel sx={{ color: "#0C121D" }}>
+                  {value.label}
+                </CheckboxLabel>
+              </Checkbox>
+            ))}
+          </CheckboxGroup>
+        </Box>
+        <View style={{ alignItems: "flex-start", marginTop: 10 }}>
+          <Text sx={{ mb: 10, fontSize: 20, fontWeight: "$bold" }}>Rating</Text>
+          <AirbnbRating
+            count={5}
+            defaultRating={0}
+            showRating={false}
+            selectedColor="#FAC712"
+            size={30}
+          />
+        </View>
+        <View
+          style={{
+            padding: 10,
+            display: "flex",
+            justifyContent: "flex-end",
+            marginTop: 8,
+            width: "100%",
+            gap: 25,
+            flexDirection: "row",
+          }}
+        >
+          <Button
+            backgroundColor="#D83F31"
+            style={{
+              padding: 10,
+              width: 100,
+              borderRadius: 20,
+            }}
+            onPress={onClose}
+          >
+            <Text
+              style={{
+                color: "#fff",
+                textAlign: "center",
+              }}
+            >
+              Cancel
+            </Text>
+          </Button>
+          <Button
+            backgroundColor="#23256A"
+            style={{
+              padding: 10,
+              width: 100,
+              borderRadius: 20,
+            }}
+          >
+            <Text
+              style={{
+                color: "#fff",
+                textAlign: "center",
+              }}
+            >
+              Submit
+            </Text>
+          </Button>
+        </View>
+      </View>
+    </Modal>
+  );
+};
+
+export default Filter;

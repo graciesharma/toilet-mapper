@@ -11,8 +11,9 @@ const LinkButton = ({ text, onPress }) => {
 
 const styles = StyleSheet.create({
   linkContainer: {
-    paddingVertical: 5,
-    paddingHorizontal: 10,
+    marginTop : 10,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
   },
   linkText: {
     color: "blue", // Change the color to match your design
