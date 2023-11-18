@@ -8,13 +8,10 @@ import { GOOGLE_API_KEY } from "./environment";
 import React, { useEffect, useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
 import * as Location from "expo-location";
-import {
-  GluestackUIProvider,
-  Icon,
-} from "./components";
+import { GluestackUIProvider, Icon } from "./components";
 import { config } from "./gluestack-ui.config";
 import { styles } from "./styles";
-import  {
+import {
   PrimaryDetails,
   ViewDetailsModal,
 } from "./components/Menu/ToiletDetails";
@@ -42,7 +39,6 @@ export const HEIGHT = height;
 
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.02;
-
 
 const getLatLngDetails = ({ currentLatitude, currentLongitude }) => {
   return new Promise((resolve) => {
@@ -92,15 +88,6 @@ export default function App() {
       setLocation(location);
     })();
   }, []);
-
-  let text = "Waiting..";
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
-
-
 
   const traceRouteOnReady = (args: any) => {
     if (args) {
@@ -261,6 +248,7 @@ export default function App() {
             {selectedToilets?.length > 0 && !showDirections && (
               <ViewListButton />
             )}
+
             {!showDirections ? (
               <>
                 <View style={styles.currentAddressContainer}>
