@@ -42,13 +42,33 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
             flexDirection: "row",
           }}
         >
-          <Text style={{ fontSize: 24, fontWeight: "600" , marginRight: 10}}>Toilet List</Text>
+          <Text style={{ fontSize: 24, fontWeight: "600", marginRight: 10 }}>
+            Toilet List
+          </Text>
 
           <TouchableOpacity
             style={{ ...styles.openModalButton, marginLeft: "auto" }}
             onPress={() => setShowFilterModal(true)}
           >
-            <Icon as={FilterIcon} size="xs" color="white" />
+            <View
+              style={{
+                flexDirection: "row",
+                margin: 0,
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{
+                  color: "white",
+                  fontWeight: "500",
+                  marginRight: 5,
+                  fontSize: 20,
+                }}
+              >
+                Filter
+              </Text>
+              <Icon as={FilterIcon} size="xs" color="white" />
+            </View>
           </TouchableOpacity>
           <Filter
             visible={showFilterModal}
@@ -126,18 +146,20 @@ const styles = StyleSheet.create({
   },
   toiletItem: {
     padding: 10,
-    borderStyle: "solid",
-    borderColor: "#E0E0E0",
-    borderWidth: 1,
     borderRadius: 12,
-    width: "100%",
-    marginTop: 12,
-    display: "flex",
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 10,
+    marginTop: 15,
+
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     height: 80,
+    elevation: 3, 
+    backgroundColor: "#fff", 
   },
+
   name: {
     fontSize: 16,
     fontWeight: "500",
@@ -150,8 +172,7 @@ const styles = StyleSheet.create({
   },
   openModalButton: {
     backgroundColor: "#262758",
-    height: 35,
-    width: 35,
+    width: 100,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
