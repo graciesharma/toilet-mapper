@@ -30,8 +30,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import ToiletListModal from "./components/ToiletListModal";
 import LinkButton from "./components/LinkButton";
 import { GOOGLE_API_KEY } from "./environment";
-import Filter from "./components/Filter/FilterModal";
-import Review from "./components/ReviewModal";
 
 export const { width, height } = Dimensions.get("window");
 
@@ -113,9 +111,6 @@ export default function App() {
       </TouchableOpacity>
     );
   }, []);
-
-
-
 
 
   if (!location)
@@ -282,7 +277,6 @@ export default function App() {
               setSelectedToilet(toilet);
             }}
           />
-
    
         </View>
       </GluestackUIProvider>

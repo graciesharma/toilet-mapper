@@ -79,11 +79,12 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
       </Box>
       <Divider />
 
-      <Box marginTop={10}>
-        <Text>
-          Opening Hours : {details?.openingTime} - {details.closingTime}
+      <View style={{marginTop : 10 , flexDirection : 'row' }}>
+        <Text sx={{fontWeight : "600" , color : "$black"}}>
+          Opening Hours : 
         </Text>
-      </Box>
+     <Text>   {details?.openingTime} - {details.closingTime}</Text>
+      </View>
     </React.Fragment>
   );
 };

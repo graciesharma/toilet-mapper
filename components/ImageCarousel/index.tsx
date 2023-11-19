@@ -38,6 +38,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
           display: "flex",
           justifyContent: "space-between",
           flexDirection: "row",
+          marginTop: 40,
+          alignItems: "center",
         }}
       >
         <Text style={styles.header}>Photos</Text>

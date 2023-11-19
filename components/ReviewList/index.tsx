@@ -6,10 +6,7 @@ import Review from "../ReviewModal";
 
 // Sample data for reviews
 const reviewsData = [
-  {
-    text: "Great place, clean and well-maintained. Highly recommended!",
-    rating: 5,
-  },
+
   {
     text: "Decent restroom, but could be cleaner. 3 stars from me.",
     rating: 3,
@@ -44,6 +41,7 @@ const ReviewList: React.FC = () => {
           justifyContent: "space-between",
           flexDirection: "row",
           marginTop: 30,
+alignItems: "center",
         }}
       >
         <Text style={styles.reviewHeader}>Reviews</Text>
