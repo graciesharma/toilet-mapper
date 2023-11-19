@@ -31,7 +31,7 @@ function generateRandomComment() {
 export const toilets = [
   {
     name: "Civil Mall Toilet",
-    address: "Civil Mall",
+    address: "Sundhara",
     tags: ["Commercial"],
     description:
       "A modern public toilet located at Civil Mall in the heart of the city.",
@@ -45,8 +45,8 @@ export const toilets = [
     closingTime: "10:00 PM",
   },
   {
-    name: "World Trade Center Toilet",
-    address: "World Trade Center",
+    name: "World Trade Center",
+    address: "Tripureshwor",
     tags: ["Commercial "],
     description:
       "A state-of-the-art restroom at the World Trade Center offering a pleasant experience.",
@@ -61,7 +61,7 @@ export const toilets = [
   },
   {
     name: "KL Tower Toilet",
-    address: "KL Tower",
+    address: "Chahabil",
     tags: ["Commercial "],
     description:
       "A convenient public toilet located at KL Tower for visitors and shoppers.",
@@ -76,7 +76,7 @@ export const toilets = [
   },
   {
     name: "Bishwojyoti Hall Toilet",
-    address: "Bishwojyoti Hall, Thamel",
+    address: " Thamel",
     tags: ["Commercial Building"],
     description:
       "A restroom at Bishwojyoti Hall, perfect for event attendees and students.",
@@ -91,7 +91,7 @@ export const toilets = [
   },
   {
     name: "Tripureshwor Hospital ",
-    address: "Tripureshwor Eye Hospital",
+    address: "Tripureshwor ",
     tags: ["Hospital"],
     description:
       "A hospital restroom at Tripureshwor Eye Hospital, clean and accessible.",
@@ -106,7 +106,7 @@ export const toilets = [
   },
   {
     name: "Om Hospital Toilet",
-    address: "Om Hospital",
+    address: "Chabahil",
     tags: ["Hospital"],
     description:
       "A well-maintained restroom at Om Hospital, perfect for patients and visitors.",
@@ -121,7 +121,7 @@ export const toilets = [
   },
   {
     name: "Bhrikutimandap 1 Toilet",
-    address: "Bhrikutimandap 1",
+    address: "Bhrikutimandap",
     tags: ["Public Toilet"],
     description:
       "A public toilet at Bhrikutimandap 1, convenient for travelers and pedestrians.",
@@ -136,7 +136,7 @@ export const toilets = [
   },
   {
     name: "Bhrikutimandap 2 Toilet",
-    address: "Bhrikutimandap 2",
+    address: "Bhrikutimandap ",
     tags: ["Public Toilet"],
     description:
       "A clean public toilet at Bhrikutimandap 2, perfect for a quick stop.",
@@ -151,7 +151,7 @@ export const toilets = [
   },
   {
     name: "Tuladevi Temple Toilet",
-    address: "Tuladevi Temple, Baluwatar",
+    address: " Baluwatar",
     tags: ["Religious Site"],
     description:
       "A restroom near Tuladevi Temple in Baluwatar, suitable for worshippers.",
@@ -166,7 +166,7 @@ export const toilets = [
   },
   {
     name: "Prahari Kalyan Kosh Petrol Pump Toilet",
-    address: "Prahari Kalyan Kosh Petrol Pump",
+    address: "Naxal",
     tags: ["Petrol Pump"],
     description:
       "A petrol pump restroom at Prahari Kalyan Kosh, convenient for travelers.",
@@ -181,7 +181,7 @@ export const toilets = [
   },
   {
     name: "Bhatbhateni Pulchowk Toilet",
-    address: "Bhatbhateni Pulchowk",
+    address: " Pulchowk",
     tags: ["Commercial "],
     description:
       "A modern restroom at Bhatbhateni Pulchowk, perfect for shoppers.",
@@ -210,7 +210,7 @@ export const toilets = [
   },
   {
     name: "Norkhang Complex Toilet",
-    address: "Norkhang Complex",
+    address: "Jawalakhel",
     tags: ["Commercial "],
     description:
       "A convenient restroom at Norkhang Complex for shoppers and visitors.",
@@ -225,7 +225,7 @@ export const toilets = [
   },
   {
     name: "District Post Office Toilet",
-    address: "District Post Office, Patan Dhoka",
+    address: "Patan Dhoka",
     tags: ["Government Building"],
     description:
       "A public toilet at District Post Office, Patan Dhoka, accessible for the public.",
@@ -240,7 +240,7 @@ export const toilets = [
   },
   {
     name: "Lalitpur Metropolitan City Toilet",
-    address: "Lalitpur Metropolitan City, Pulchowk",
+    address: " Pulchowk",
     tags: ["Government "],
     description:
       "A government building restroom at Lalitpur Metropolitan City, Pulchowk.",
@@ -255,7 +255,7 @@ export const toilets = [
   },
   {
     name: "Pulchowk Engineering Campus Toilet",
-    address: "Pulchowk Engineering Campus",
+    address: "Pulchowk",
     tags: ["Government "],
     description:
       "A restroom at Pulchowk Engineering Campus, clean and well-maintained.",
@@ -270,7 +270,7 @@ export const toilets = [
   },
   {
     name: "Nepal Telecom, Pulchowk Toilet",
-    address: "Nepal Telecom, Pulchowk",
+    address: "Pulchowk",
     tags: ["Government "],
     description:
       "A restroom at Nepal Telecom, Pulchowk, accessible for employees and visitors.",
@@ -285,7 +285,7 @@ export const toilets = [
   },
   {
     name: "Nepal Telecom Jawalakhel Toilet",
-    address: "Nepal Telecom Jawalakhel",
+    address: "Jawalakhel",
     tags: ["Government "],
     description:
       "A public toilet at Nepal Telecom Jawalakhel, convenient for pedestrians.",
@@ -300,7 +300,7 @@ export const toilets = [
   },
   {
     name: "Sumeru City Hospital Toilet",
-    address: "Sumeru City Hospital",
+    address: "Pulchowk",
     tags: ["Hospital"],
     description:
       "A hospital restroom at Sumeru City Hospital, suitable for patients and visitors.",
@@ -315,7 +315,7 @@ export const toilets = [
   },
   {
     name: "Alka Hospital Toilet",
-    address: "Alka Hospital",
+    address: "Jawalakhel",
     tags: ["Hospital"],
     description:
       "A clean and well-maintained restroom at Alka Hospital, suitable for healthcare needs.",
@@ -330,7 +330,7 @@ export const toilets = [
   },
   {
     name: "Patan Hospital Toilet",
-    address: "Patan Hospital",
+    address: "Lagankhel",
     tags: ["Hospital"],
     description:
       "A hospital restroom at Patan Hospital, designed for patient comfort and convenience.",
@@ -345,7 +345,7 @@ export const toilets = [
   },
   {
     name: "Aerosan Public Toilet",
-    address: "Aerosan",
+    address: "Patan Dhoka",
     tags: ["Public Toilet"],
     description:
       "A public toilet at Aerosan, providing essential facilities for travelers and pedestrians.",
@@ -360,7 +360,7 @@ export const toilets = [
   },
   {
     name: "Gayatri Devi Oil Store Ekantakuna Toilet",
-    address: "Gayatri Devi Oil Store Ekantakuna",
+    address: " Ekantakuna",
     tags: ["Petrol Pump"],
     description:
       "A restroom at Gayatri Devi Oil Store Ekantakuna, suitable for customers.",
@@ -375,7 +375,7 @@ export const toilets = [
   },
   {
     name: "Manjushree Park Toilet",
-    address: "Manjushree Park",
+    address: "Chobar",
     tags: ["Park"],
     description:
       "A park restroom at Manjushree Park, offering a clean and pleasant experience for visitors.",
@@ -390,7 +390,7 @@ export const toilets = [
   },
   {
     name: "Mahalaxmi Temple Toilet",
-    address: "Mahalaxmi Temple",
+    address: "Mahalaxmisthan",
     tags: ["Religious Site"],
     description:
       "A restroom near Mahalaxmi Temple, providing facilities for worshippers.",
@@ -405,7 +405,7 @@ export const toilets = [
   },
   {
     name: "Maitidevi Temple Toilet",
-    address: "Maitidevi Temple",
+    address: "Maitidevi ",
     tags: ["Public Toilet"],
     description:
       "A public toilet at Maitidevi Temple, clean and well-maintained for all visitors.",

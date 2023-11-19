@@ -106,6 +106,7 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
               </View>
               <View>
                 <Button
+                style ={{borderRadius: 10}}
                   backgroundColor="#23256A"
                   onPress={() => onToiletSelect(item)}
                 >
@@ -114,7 +115,7 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
                   <Text
                     style={{
                       color: "#fff",
-                      borderRadius: 20,
+                      borderRadius: 40,
                       marginLeft: 6,
                     }}
                   >
@@ -145,19 +146,26 @@ const styles = StyleSheet.create({
     marginTop: 12,
   },
   toiletItem: {
-    padding: 10,
-    borderRadius: 12,
+    padding: 15,
+    borderRadius: 15,
     marginLeft: 5,
     marginRight: 5,
     marginBottom: 10,
     marginTop: 15,
-
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     height: 80,
     elevation: 3, 
     backgroundColor: "#fff", 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+  
   },
 
   name: {
