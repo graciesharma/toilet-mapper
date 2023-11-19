@@ -1,11 +1,9 @@
 import React, { ReactNode, useEffect, useRef } from "react";
 import {
   View,
-  Text,
   TouchableOpacity,
   Animated,
   Easing,
-  Modal,
   Dimensions,
 } from "react-native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
