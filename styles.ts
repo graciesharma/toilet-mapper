@@ -70,8 +70,8 @@ export const styles = StyleSheet.create({
   },
   openModalButton: {
     backgroundColor: "#262758",
-    height: 40,
-    width: 40,
+    height: 35,
+    width: 35,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",

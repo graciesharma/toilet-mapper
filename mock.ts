@@ -32,7 +32,7 @@ export const toilets = [
   {
     name: "Civil Mall Toilet",
     address: "Civil Mall",
-    tags: ["Commercial Building"],
+    tags: ["Commercial"],
     description:
       "A modern public toilet located at Civil Mall in the heart of the city.",
     coords: {
@@ -47,7 +47,7 @@ export const toilets = [
   {
     name: "World Trade Center Toilet",
     address: "World Trade Center",
-    tags: ["Commercial Building"],
+    tags: ["Commercial "],
     description:
       "A state-of-the-art restroom at the World Trade Center offering a pleasant experience.",
     coords: {
@@ -62,7 +62,7 @@ export const toilets = [
   {
     name: "KL Tower Toilet",
     address: "KL Tower",
-    tags: ["Commercial Building"],
+    tags: ["Commercial "],
     description:
       "A convenient public toilet located at KL Tower for visitors and shoppers.",
     coords: {
@@ -90,7 +90,7 @@ export const toilets = [
     closingTime: "08:00 PM",
   },
   {
-    name: "Tripureshwor Hospital Toilet",
+    name: "Tripureshwor Hospital ",
     address: "Tripureshwor Eye Hospital",
     tags: ["Hospital"],
     description:
@@ -182,7 +182,7 @@ export const toilets = [
   {
     name: "Bhatbhateni Pulchowk Toilet",
     address: "Bhatbhateni Pulchowk",
-    tags: ["Commercial Building"],
+    tags: ["Commercial "],
     description:
       "A modern restroom at Bhatbhateni Pulchowk, perfect for shoppers.",
     coords: {
@@ -197,7 +197,7 @@ export const toilets = [
   {
     name: "Labim Mall Toilet",
     address: "Labim Mall",
-    tags: ["Commercial Building"],
+    tags: ["Commercial "],
     description: "A restroom at Labim Mall, clean and accessible for shoppers.",
     coords: {
       latitude: 27.677443479930687,
@@ -211,7 +211,7 @@ export const toilets = [
   {
     name: "Norkhang Complex Toilet",
     address: "Norkhang Complex",
-    tags: ["Commercial Building"],
+    tags: ["Commercial "],
     description:
       "A convenient restroom at Norkhang Complex for shoppers and visitors.",
     coords: {
@@ -241,7 +241,7 @@ export const toilets = [
   {
     name: "Lalitpur Metropolitan City Toilet",
     address: "Lalitpur Metropolitan City, Pulchowk",
-    tags: ["Government Building"],
+    tags: ["Government "],
     description:
       "A government building restroom at Lalitpur Metropolitan City, Pulchowk.",
     coords: {
@@ -256,7 +256,7 @@ export const toilets = [
   {
     name: "Pulchowk Engineering Campus Toilet",
     address: "Pulchowk Engineering Campus",
-    tags: ["Government Building"],
+    tags: ["Government "],
     description:
       "A restroom at Pulchowk Engineering Campus, clean and well-maintained.",
     coords: {
@@ -271,7 +271,7 @@ export const toilets = [
   {
     name: "Nepal Telecom, Pulchowk Toilet",
     address: "Nepal Telecom, Pulchowk",
-    tags: ["Government Building"],
+    tags: ["Government "],
     description:
       "A restroom at Nepal Telecom, Pulchowk, accessible for employees and visitors.",
     coords: {
@@ -286,7 +286,7 @@ export const toilets = [
   {
     name: "Nepal Telecom Jawalakhel Toilet",
     address: "Nepal Telecom Jawalakhel",
-    tags: ["Government Building"],
+    tags: ["Government "],
     description:
       "A public toilet at Nepal Telecom Jawalakhel, convenient for pedestrians.",
     coords: {
@@ -431,7 +431,7 @@ export const toilets = [
     },
     images: [],
     reviews: generateRandomReviews(),
-       openingTime: "24 Hours",
+    openingTime: "24 Hours",
     closingTime: "24 Hours",
   },
   {
@@ -446,7 +446,7 @@ export const toilets = [
     },
     images: [],
     reviews: generateRandomReviews(),
-       openingTime: "24 Hours",
+    openingTime: "24 Hours",
     closingTime: "24 Hours",
   },
   {
@@ -461,7 +461,7 @@ export const toilets = [
     },
     images: [],
     reviews: generateRandomReviews(),
-       openingTime: "24 Hours",
+    openingTime: "24 Hours",
     closingTime: "24 Hours",
   },
 ];

@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { Icon } from "./core";
-import { Calendar } from "lucide-react-native";
 import { Spinner } from "@gluestack-ui/themed";
 
 const SubmitButton: React.FC = (props: {
@@ -36,7 +35,6 @@ const SubmitButton: React.FC = (props: {
         }}
       />
       <Text style={styles.buttonText}>{props?.text}</Text>
-      {/* <ToiletIcon width={20} height={20} fill="white" /> */}
     </TouchableOpacity>
   );
 };

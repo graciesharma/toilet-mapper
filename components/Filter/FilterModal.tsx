@@ -65,7 +65,7 @@ const Filter = ({ visible, onClose }: IProps) => {
   const [values, setValues] = React.useState([]);
   return (
     <Modal visible={visible} animationType="slide" style={{ padding: 20 }}>
-      <Text style={{ margin: 15, fontSize: 20, fontWeight: "600" }}>
+      <Text style={{ margin: 15, fontSize: 25, fontWeight: "600" }}>
         All Filters
       </Text>
       <View style={{ padding: 20 }}>

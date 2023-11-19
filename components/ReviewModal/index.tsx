@@ -1,16 +1,14 @@
 import React from "react";
-import { Modal, TouchableOpacity, View } from "react-native";
-
+import { Modal, TouchableOpacity, View, StatusBar } from "react-native";
 import {
   Box,
   Button,
-  CheckIcon,
   Divider,
   Text,
   Textarea,
   TextareaInput,
 } from "@gluestack-ui/themed";
-import { AirbnbRating, Rating } from "react-native-ratings";
+import { AirbnbRating } from "react-native-ratings";
 
 interface IProps {
   visible: boolean;
@@ -24,6 +22,9 @@ const Review = ({ visible, onClose }: IProps) => {
       animationType="slide"
       style={{ padding: 20, margin: 20 }}
     >
+      {/* Set the status bar background color */}
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+
       <View>
         <TouchableOpacity
           onPress={onClose}
@@ -46,7 +47,7 @@ const Review = ({ visible, onClose }: IProps) => {
 
       <Box>
         <Text color="black" sx={{ m: 15, fontSize: 20, fontWeight: "$light" }}>
-          Your opinion means the world to us and we appreciate the time you’re
+          Your opinion means the world to us, and we appreciate the time you’re
           taking to leave a review.
         </Text>
       </Box>
@@ -110,7 +111,7 @@ const Review = ({ visible, onClose }: IProps) => {
           margin: 15,
         }}
       >
-        <TextareaInput placeholder="Add some thing about your experience" />
+        <TextareaInput placeholder="Add something about your experience" />
       </Textarea>
 
       <View

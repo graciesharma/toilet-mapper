@@ -1,9 +1,5 @@
 import MapView, { LatLng, Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { View, Dimensions, Text, TouchableOpacity, Button } from "react-native";
-import {
-  GooglePlaceDetail,
-  GooglePlacesAutocomplete,
-} from "react-native-google-places-autocomplete";
 import React, { useEffect, useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
 import * as Location from "expo-location";
@@ -24,6 +20,7 @@ import {
   MapIcon,
   MapPin,
   SearchIcon,
+  MapPinIcon,
 } from "lucide-react-native";
 import ToiletMarker from "./illustration/toilet-marker";
 import SubmitButton from "./components/SubmitButton";
@@ -39,9 +36,6 @@ import Review from "./components/ReviewModal";
 export const { width, height } = Dimensions.get("window");
 
 export const HEIGHT = height;
-
-const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.02;
 
 const getLatLngDetails = ({ currentLatitude, currentLongitude }) => {
   return new Promise((resolve) => {
@@ -120,27 +114,9 @@ export default function App() {
     );
   }, []);
 
-  const ViewFilterButton = React.useCallback(() => {
-    return (
-      <TouchableOpacity
-        style={{ ...styles.openModalButton, marginLeft: "auto" }}
-        onPress={() => setShowFilterModal(true)}
-      >
-        <Icon as={FilterIcon} size="md" color="white" />
-      </TouchableOpacity>
-    );
-  }, []);
 
-  const ViewReviewModal = React.useCallback(() => {
-    return (
-      <TouchableOpacity
-        style={{ ...styles.openModalButton, marginLeft: "auto" }}
-        onPress={() => setshowReviewModal(true)}
-      >
-        <Icon as={EditIcon} size="md" color="white" />
-      </TouchableOpacity>
-    );
-  }, []);
+
+
 
   if (!location)
     return (
@@ -273,8 +249,6 @@ export default function App() {
             {selectedToilets?.length > 0 && !showDirections && (
               <>
                 <ViewListButton />
-                <ViewFilterButton />
-                <ViewReviewModal />
               </>
             )}
 
@@ -308,15 +282,8 @@ export default function App() {
               setSelectedToilet(toilet);
             }}
           />
-          <Filter
-            visible={showFilterModal}
-            onClose={() => setShowFilterModal(false)}
-          />
 
-          <Review
-            visible={showReviewModal}
-            onClose={() => setshowReviewModal(false)}
-          />
+   
         </View>
       </GluestackUIProvider>
     </GestureHandlerRootView>

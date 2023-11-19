@@ -66,7 +66,7 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
             mr={10}
             key={index}
             mt={10}
-            w={140}
+            w="auto"
             h={22}
             size="lg"
             variant="solid"
@@ -74,7 +74,6 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
             action="success"
           >
             <Badge.Text>{data}</Badge.Text>
-            {/* <Badge.Icon as={data.icon} ml="$2" /> */}
           </Badge>
         ))}
       </Box>

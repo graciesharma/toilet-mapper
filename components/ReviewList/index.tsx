@@ -1,7 +1,8 @@
-import React from "react";
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
 import { AirbnbRating } from "react-native-ratings"; // Import AirbnbRating from react-native-ratings
-import { AddIcon, Button } from "../core";
+import { AddIcon, Button, EditIcon, Icon } from "../core";
+import Review from "../ReviewModal";
 
 // Sample data for reviews
 const reviewsData = [
@@ -20,43 +21,40 @@ const reviewsData = [
 ];
 
 const ReviewList: React.FC = () => {
+  const [showReviewModal, setshowReviewModal] = useState(false);
+
+  const ViewReviewModal = React.useCallback(() => {
+    return (
+      <TouchableOpacity
+
+        style={{ ...styles.openModalButton, marginLeft: "auto" }}
+        onPress={() => setshowReviewModal(true)}
+      >
+        <Icon as={EditIcon} size="md" color="white" />
+      </TouchableOpacity>
+    );
+  }, []);
   return (
     <View style={styles.container}>
-      <Button
-        backgroundColor="skyblue"
-        //   onPress={() => onToiletSelect(item)}
-        style={{
-          marginVertical: 6,
-          borderRadius: 8,
-        }}
-      >
-        <AddIcon color="white" />
 
-        <Text
-          style={{
-            color: "#fff",
-            borderRadius: 20,
-          }}
-        >
-          Add Review
-        </Text>
-      </Button>
+      
       <View
         style={{
           display: "flex",
           justifyContent: "space-between",
           flexDirection: "row",
+          marginTop: 30,
         }}
       >
         <Text style={styles.reviewHeader}>Reviews</Text>
+        <ViewReviewModal />
 
-        <AirbnbRating
-          count={5}
-          defaultRating={4}
-          size={20}
-          showRating={false}
-          isDisabled
-        />
+        <Review
+            visible={showReviewModal}
+            onClose={() => setshowReviewModal(false)}
+          />
+
+      
       </View>
 
       <FlatList
@@ -64,14 +62,9 @@ const ReviewList: React.FC = () => {
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.reviewContainer}>
-            {/* <AirbnbRating
-              count={5}
-              defaultRating={item.rating}
-              size={20}
-              showRating={false}
-              isDisabled
-            /> */}
+            
             <Text>{item.text}</Text>
+            
           </View>
         )}
       />
@@ -82,20 +75,30 @@ const ReviewList: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    padding: 16,
   },
   reviewHeader: {
     fontSize: 20,
     fontWeight: "bold",
     marginVertical: 16,
+    
   },
   reviewContainer: {
+    width: "auto",
     marginBottom: 16,
     borderStyle: "solid",
     borderColor: "lightgray",
     borderWidth: 1,
     borderRadius: 8,
-    padding: 16,
+    padding: 15,
+  },
+  openModalButton: {
+    backgroundColor: "#262758",
+    height: 35,
+    width: 35,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
   },
 });
 

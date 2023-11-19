@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal,
   Text,
@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Toilet } from "../../interfaces/Toilet";
-import { Button, CloseIcon, Divider } from "../core";
-import { MapIcon, MapPin } from "lucide-react-native";
+import { Button, CloseIcon, Divider, Icon } from "../core";
+import { FilterIcon, MapPin } from "lucide-react-native";
+import Filter from "../Filter/FilterModal";
 
 interface ToiletListModalProps {
   visible: boolean;
@@ -25,6 +26,8 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
   toilets,
   onToiletSelect,
 }) => {
+  const [showFilterModal, setShowFilterModal] = useState(false);
+
   return (
     <Modal visible={visible} animationType="slide">
       <View
@@ -34,7 +37,24 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 24, fontWeight: "600" }}>Toilet List</Text>
+        <View
+          style={{
+            flexDirection: "row",
+          }}
+        >
+          <Text style={{ fontSize: 24, fontWeight: "600" , marginRight: 10}}>Toilet List</Text>
+
+          <TouchableOpacity
+            style={{ ...styles.openModalButton, marginLeft: "auto" }}
+            onPress={() => setShowFilterModal(true)}
+          >
+            <Icon as={FilterIcon} size="xs" color="white" />
+          </TouchableOpacity>
+          <Filter
+            visible={showFilterModal}
+            onClose={() => setShowFilterModal(false)}
+          />
+        </View>
         <TouchableOpacity
           onPress={onClose}
           style={{
@@ -127,6 +147,15 @@ const styles = StyleSheet.create({
   },
   reviews: {
     fontSize: 12,
+  },
+  openModalButton: {
+    backgroundColor: "#262758",
+    height: 35,
+    width: 35,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
   },
 });
 
