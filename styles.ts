@@ -76,6 +76,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,
+    marginBottom: 10,
   },
   currentAddressContainer: {
     backgroundColor: "green",
@@ -86,6 +87,7 @@ export const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     borderRadius: 30,
+    marginBottom: 10,
   },
   buttonsContainer: {
     position: "absolute",

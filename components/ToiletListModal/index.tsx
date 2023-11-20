@@ -32,49 +32,43 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
     <Modal visible={visible} animationType="slide">
       <View
         style={{
-          margin: 15,
           flexDirection: "row",
           alignItems: "center",
+          width: "100%",
+          padding: 15,
         }}
       >
-        <View
-          style={{
-            flexDirection: "row",
-          }}
-        >
-          <Text style={{ fontSize: 24, fontWeight: "600", marginRight: 10 }}>
-            Toilet List
-          </Text>
+        <Text style={{ fontSize: 24, fontWeight: "600" }}>Toilet List</Text>
 
-          <TouchableOpacity
-            style={{ ...styles.openModalButton, marginLeft: "auto" }}
-            onPress={() => setShowFilterModal(true)}
+        <TouchableOpacity
+          style={{ ...styles.openModalButton, marginLeft: 15 }}
+          onPress={() => setShowFilterModal(true)}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              padding: 4,
+            }}
           >
-            <View
+            <Text
               style={{
-                flexDirection: "row",
-                margin: 0,
-                alignItems: "center",
+                color: "white",
+                fontWeight: "500",
+                marginRight: 5,
+                fontSize: 20,
               }}
             >
-              <Text
-                style={{
-                  color: "white",
-                  fontWeight: "500",
-                  marginRight: 5,
-                  fontSize: 20,
-                }}
-              >
-                Filter
-              </Text>
-              <Icon as={FilterIcon} size="xs" color="white" />
-            </View>
-          </TouchableOpacity>
-          <Filter
-            visible={showFilterModal}
-            onClose={() => setShowFilterModal(false)}
-          />
-        </View>
+              Filter
+            </Text>
+            <Icon as={FilterIcon} size="xs" color="white" />
+          </View>
+        </TouchableOpacity>
+        <Filter
+          visible={showFilterModal}
+          onClose={() => setShowFilterModal(false)}
+        />
+
         <TouchableOpacity
           onPress={onClose}
           style={{
@@ -106,7 +100,7 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
               </View>
               <View>
                 <Button
-                style ={{borderRadius: 10}}
+                  style={{ borderRadius: 10 }}
                   backgroundColor="#23256A"
                   onPress={() => onToiletSelect(item)}
                 >
@@ -156,8 +150,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     height: 80,
-    elevation: 3, 
-    backgroundColor: "#fff", 
+    elevation: 3,
+    backgroundColor: "#fff",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -165,7 +159,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.3,
     shadowRadius: 4,
-  
   },
 
   name: {

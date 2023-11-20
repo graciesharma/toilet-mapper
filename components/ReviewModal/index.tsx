@@ -46,7 +46,10 @@ const Review = ({ visible, onClose }: IProps) => {
       <Divider />
 
       <Box>
-        <Text color="black" sx={{ m: 15, fontSize: 20, fontWeight: "$light" }}>
+        <Text
+          color="black"
+          sx={{ m: 15, fontSize: 16, fontWeight: "$semibold" }}
+        >
           Your opinion means the world to us, and we appreciate the time you’re
           taking to leave a review.
         </Text>
@@ -131,6 +134,7 @@ const Review = ({ visible, onClose }: IProps) => {
             padding: 10,
             width: 100,
             borderRadius: 20,
+            marginRight: 10,
           }}
           onPress={onClose}
         >

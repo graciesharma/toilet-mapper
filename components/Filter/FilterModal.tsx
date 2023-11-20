@@ -201,6 +201,7 @@ const Filter = ({ visible, onClose }: IProps) => {
               padding: 10,
               width: 100,
               borderRadius: 20,
+              marginRight: 10,
             }}
             onPress={onClose}
           >

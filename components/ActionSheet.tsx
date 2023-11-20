@@ -6,7 +6,6 @@ import {
   Easing,
   Dimensions,
 } from "react-native";
-import { PanGestureHandler, State } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 import { getBottomSpace } from "react-native-iphone-x-helper";
 import { CloseIcon } from "./core";
@@ -102,7 +101,7 @@ const styles = {
   },
   sheetContainer: {
     justifyContent: "flex-end",
-    height: Dimensions.get("screen").height / 2.80,
+    height: Dimensions.get("screen").height / 2.8,
 
     position: "absolute",
     bottom: 0,

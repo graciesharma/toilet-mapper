@@ -3,7 +3,7 @@ import { View, Dimensions, Text, TouchableOpacity, Button } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import MapViewDirections from "react-native-maps-directions";
 import * as Location from "expo-location";
-import { EditIcon, GluestackUIProvider, Icon } from "./components";
+import { GluestackUIProvider, Icon } from "./components";
 import { config } from "./gluestack-ui.config";
 import { styles } from "./styles";
 import {
@@ -30,6 +30,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import ToiletListModal from "./components/ToiletListModal";
 import LinkButton from "./components/LinkButton";
 import { GOOGLE_API_KEY } from "./environment";
+import { Spinner } from "@gluestack-ui/themed";
 
 export const { width, height } = Dimensions.get("window");
 
@@ -112,7 +113,6 @@ export default function App() {
     );
   }, []);
 
-
   if (!location)
     return (
       <View
@@ -124,7 +124,7 @@ export default function App() {
           justifyContent: "center",
         }}
       >
-        <Text>Loading!!</Text>
+        <Spinner color="#262758" size="large" />
       </View>
     );
 
@@ -211,7 +211,7 @@ export default function App() {
               <Text>Loading...</Text>
             </View>
           )}
-          <ActionSheet 
+          <ActionSheet
             open={showDirections}
             onClose={() => {
               setShowDirections(false);
@@ -221,10 +221,10 @@ export default function App() {
             }}
           >
             <PrimaryDetails {...selectedToilet} />
-            <LinkButton 
+            <LinkButton
               text="View Details"
               onPress={() => setShowDirections(false)}
-            ></LinkButton>
+            />
             <View
               style={{
                 marginTop: "auto",
@@ -261,7 +261,7 @@ export default function App() {
                 <SubmitButton
                   //  @ts-expect-error
                   onPress={fetchLatLng}
-                  text="Search For toilets Nearby"
+                  text="Search For Toilets Nearby"
                   icon={SearchIcon}
                   isLoading={isFetchingToilets}
                 />
@@ -277,7 +277,6 @@ export default function App() {
               setSelectedToilet(toilet);
             }}
           />
-   
         </View>
       </GluestackUIProvider>
     </GestureHandlerRootView>

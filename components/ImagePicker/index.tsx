@@ -64,10 +64,15 @@ export class ImagePickerComponent extends React.Component<ImagePickerComponentPr
             >
               <CloseIcon />
             </TouchableOpacity>
-
-            <Button title="Choose Photo" onPress={this.handleChoosePhoto} />
-            <Button title="Take Photo" onPress={this.handleTakePhoto} />
-            <Button title="Cancel" onPress={this.props.onClose} />
+            <View style={{ marginBottom: 10, marginTop: 20 }}>
+              <Button title="Choose Photo" onPress={this.handleChoosePhoto} />
+            </View>
+            <View style={{ marginBottom: 10 }}>
+              <Button title="Take Photo" onPress={this.handleTakePhoto} />
+            </View>
+            <View style={{ marginBottom: 10 }}>
+              <Button title="Cancel" onPress={this.props.onClose} />
+            </View>
           </View>
         </View>
       </Modal>
