@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import { AirbnbRating } from "react-native-ratings"; // Import AirbnbRating from react-native-ratings
 import { AddIcon, Button, EditIcon, Icon } from "../core";
 import Review from "../ReviewModal";
 
 // Sample data for reviews
 const reviewsData = [
-
   {
     text: "Decent restroom, but could be cleaner. 3 stars from me.",
     rating: 3,
@@ -23,7 +28,6 @@ const ReviewList: React.FC = () => {
   const ViewReviewModal = React.useCallback(() => {
     return (
       <TouchableOpacity
-
         style={{ ...styles.openModalButton, marginLeft: "auto" }}
         onPress={() => setshowReviewModal(true)}
       >
@@ -33,26 +37,22 @@ const ReviewList: React.FC = () => {
   }, []);
   return (
     <View style={styles.container}>
-
-      
       <View
         style={{
           display: "flex",
           justifyContent: "space-between",
           flexDirection: "row",
           marginTop: 30,
-alignItems: "center",
+          alignItems: "center",
         }}
       >
         <Text style={styles.reviewHeader}>Reviews</Text>
         <ViewReviewModal />
 
         <Review
-            visible={showReviewModal}
-            onClose={() => setshowReviewModal(false)}
-          />
-
-      
+          visible={showReviewModal}
+          onClose={() => setshowReviewModal(false)}
+        />
       </View>
 
       <FlatList
@@ -60,9 +60,7 @@ alignItems: "center",
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.reviewContainer}>
-            
             <Text>{item.text}</Text>
-            
           </View>
         )}
       />
@@ -78,7 +76,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     marginVertical: 16,
-    
   },
   reviewContainer: {
     width: "auto",

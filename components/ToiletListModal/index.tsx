@@ -75,7 +75,7 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
             marginLeft: "auto",
           }}
         >
-          <CloseIcon size="md" color="black" />
+          <CloseIcon size="xl" color="black" />
         </TouchableOpacity>
       </View>
 

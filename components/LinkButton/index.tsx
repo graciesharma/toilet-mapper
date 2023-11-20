@@ -11,7 +11,7 @@ const LinkButton = ({ text, onPress }) => {
 
 const styles = StyleSheet.create({
   linkContainer: {
-    marginTop : 10,
+    marginTop: 10,
     paddingVertical: 0,
     paddingHorizontal: 0,
   },
