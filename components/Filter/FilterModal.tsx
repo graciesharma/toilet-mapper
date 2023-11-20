@@ -11,8 +11,9 @@ import {
   CheckboxIcon,
   CheckboxLabel,
   CheckboxGroup,
-  CloseIcon,
 } from "@gluestack-ui/themed";
+import { CloseIcon, Divider } from "../core";
+
 import { AirbnbRating, Rating } from "react-native-ratings";
 
 interface IProps {
@@ -65,9 +66,29 @@ const Filter = ({ visible, onClose }: IProps) => {
   const [values, setValues] = React.useState([]);
   return (
     <Modal visible={visible} animationType="slide" style={{ padding: 20 }}>
-      <Text style={{ margin: 15, fontSize: 25, fontWeight: "600" }}>
-        All Filters
-      </Text>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: 15,
+        }}
+      >
+        <Text style={{ fontSize: 24, fontWeight: "600" }}>All Filters</Text>
+
+        <TouchableOpacity
+          onPress={onClose}
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ marginRight: 10 }}></Text>
+          <CloseIcon size="xl" color="black" />
+        </TouchableOpacity>
+      </View>
+<Divider/>
+
       <View style={{ padding: 20 }}>
         <Box sx={{ marginBottom: 20 }}>
           <Text sx={{ mb: 10, fontSize: 20, fontWeight: "$bold" }}>

@@ -3,12 +3,12 @@ import { Modal, TouchableOpacity, View, StatusBar } from "react-native";
 import {
   Box,
   Button,
-  Divider,
   Text,
   Textarea,
   TextareaInput,
 } from "@gluestack-ui/themed";
 import { AirbnbRating } from "react-native-ratings";
+import { CloseIcon, Divider } from "../core";
 
 interface IProps {
   visible: boolean;
@@ -25,26 +25,29 @@ const Review = ({ visible, onClose }: IProps) => {
       {/* Set the status bar background color */}
       <StatusBar backgroundColor="#fff" barStyle="dark-content" />
 
-      <View>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: 15,
+        }}
+      >
+        <Text style={{ fontSize: 24, fontWeight: "600" }}>Write a review</Text>
+
         <TouchableOpacity
           onPress={onClose}
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
             flexDirection: "row",
-            width: "100%",
-            padding: 15,
+            alignItems: "center",
           }}
         >
-          <Text fontSize={35} fontWeight="bold">
-            Write a review
-          </Text>
+          <Text style={{ marginRight: 10 }}></Text>
+          <CloseIcon size="xl" color="black" />
         </TouchableOpacity>
       </View>
 
       <Divider />
-
       <Box>
         <Text
           color="black"
