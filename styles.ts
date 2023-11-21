@@ -223,8 +223,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 8,
     padding: 20,
-    width: "95%", // Adjust the width as needed
-    height: "84%", // Adjust the max height as needed
+    width: "100%", // Adjust the width as needed
+    height: "100%", // Adjust the max height as needed
   },
   detailsModalTitle: {
     fontSize: 18,

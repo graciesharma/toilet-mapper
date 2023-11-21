@@ -76,7 +76,7 @@ export const toilets = [
   },
   {
     name: "Bishwojyoti Hall Toilet",
-    address: " Thamel",
+    address: "Thamel",
     tags: ["Commercial Building"],
     description:
       "A restroom at Bishwojyoti Hall, perfect for event attendees and students.",

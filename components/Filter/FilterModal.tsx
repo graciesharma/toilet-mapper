@@ -87,7 +87,7 @@ const Filter = ({ visible, onClose }: IProps) => {
           <CloseIcon size="xl" color="black" />
         </TouchableOpacity>
       </View>
-<Divider/>
+      <Divider />
 
       <View style={{ padding: 20 }}>
         <Box sx={{ marginBottom: 20 }}>
@@ -106,7 +106,7 @@ const Filter = ({ visible, onClose }: IProps) => {
                 value={value.value}
                 isInvalid={false}
                 isDisabled={false}
-                accessibilityLabel="Select or deselect the checkbox"
+                aria-label="Select or deselect the checkbox"
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -159,6 +159,7 @@ const Filter = ({ visible, onClose }: IProps) => {
                 value={value.value}
                 isInvalid={false}
                 isDisabled={false}
+                aria-label="Accessibility Features"
                 sx={{
                   display: "flex",
                   alignItems: "center",

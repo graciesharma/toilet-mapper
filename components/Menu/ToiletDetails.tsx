@@ -49,8 +49,8 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
     <React.Fragment>
       <Box style={{ marginBottom: 10 }}>
         <Heading>{details.name}</Heading>
+        <Text style={{ fontWeight: "600" }}>{details.address}</Text>
         <Text>{details.description}</Text>
-        <Text>{details.address}</Text>
       </Box>
       <Divider />
       <Box
@@ -76,9 +76,11 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
           </Badge>
         ))}
       </Box>
-      <Divider />
+      <Divider /> 
       <View style={{ marginTop: 10, flexDirection: "row" }}>
-        <Text sx={{ fontWeight: "600", color: "$black" }}>Opening Hours :</Text>
+        <Text sx={{ fontWeight: "600", color: "$black" }}>
+          Opening Hours :{" "}
+        </Text>
         <Text>
           {details?.openingTime} - {details.closingTime}
         </Text>
@@ -105,16 +107,39 @@ export const ViewDetailsModal = (props: {
         >
           <View style={styles.fullPageModalContent}>
             <View style={styles.detailsModalContent}>
-              <TouchableOpacity
-                onPress={closeModalDetails}
+              <View
                 style={{
-                  alignSelf: "flex-end",
-                  top: 0,
-                  right: 0,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  paddingTop: 17,
+                  paddingBottom: 12,
                 }}
               >
-                <CloseIcon size="md" color="black" />
-              </TouchableOpacity>
+                <Text
+                  style={{
+                    fontSize: 24,
+                    fontWeight: "600",
+                    color: "black",
+                    padding: 2,
+                  }}
+                >
+                  Toilet Details
+                </Text>
+
+                <TouchableOpacity
+                  onPress={closeModalDetails}
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text style={{ marginRight: 10 }}></Text>
+                  <CloseIcon size="xl" color="black" />
+                </TouchableOpacity>
+              </View>
+
+              <Divider style={{ marginBottom: 20 }} />
               <PrimaryDetails {...details} />
               <View
                 style={{
@@ -125,7 +150,6 @@ export const ViewDetailsModal = (props: {
                 <ReviewList />
               </View>
 
-              <View></View>
               <Button
                 size="md"
                 variant="solid"

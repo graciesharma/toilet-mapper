@@ -111,6 +111,8 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
                       color: "#fff",
                       borderRadius: 40,
                       marginLeft: 6,
+                      fontWeight: "500",
+                      fontSize : 15
                     }}
                   >
                     View Details
@@ -170,6 +172,7 @@ const styles = StyleSheet.create({
   },
   reviews: {
     fontSize: 12,
+    color: "#8990A3",
   },
   openModalButton: {
     backgroundColor: "#262758",
