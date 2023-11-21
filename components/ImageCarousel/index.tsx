@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity } from "react-native";
 import { View, ScrollView, Image, StyleSheet, Dimensions } from "react-native";
 import { Icon } from "../core";
-import { CameraIcon } from "lucide-react-native";
-import { ImagePickerComponent } from "../ImagePicker";
+import ImageUpload from "../ImagePicker";
 
 interface ImageCarouselProps {
   images: string[];
@@ -12,49 +11,21 @@ interface ImageCarouselProps {
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
   const [showPhotoUpload, setshowPhotoUpload] = useState(false);
 
-  const ViewPhotoUpload = React.useCallback(() => {
-    return (
-      <TouchableOpacity
-        style={{
-          backgroundColor: "#262758",
-          height: 35,
-          width: 35,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          borderRadius: 20,
-          marginLeft: "auto",
-        }}
-        onPress={() => setshowPhotoUpload(true)}
-      >
-        <Icon as={CameraIcon} size="md" color="white" />
-      </TouchableOpacity>
-    );
-  }, []);
   return (
     <React.Fragment>
-      <View
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "row",
-          marginTop: 40,
-          alignItems: "center",
-        }}
-      >
-        <Text style={styles.header}>Photos</Text>
+     <View
+  style={{
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    marginTop: 40,
+    alignItems: "center",
+  }}
+>
+  <Text style={styles.header}>Photos</Text>
+  <ImageUpload />
+</View>
 
-        <ViewPhotoUpload />
-      </View>
-
-      <ImagePickerComponent
-        visible={showPhotoUpload}
-        onImagePicked={(response) => {
-          // Handle the picked image if needed
-          console.log("Image picked:", response);
-        }}
-        onClose={() => setshowPhotoUpload(false)}
-      />
 
       <ScrollView
         horizontal
@@ -71,7 +42,6 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
 
 const styles = StyleSheet.create({
   imageContainer: {
-    // marginBottom: 16,
 
     flex: 1,
   },

@@ -1,105 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
-  Button,
+  Text,
   Image,
-  Modal,
-  StyleSheet,
   TouchableOpacity,
+  StyleSheet,
+  Alert,
 } from "react-native";
-import ImagePicker, {
-  ImagePickerResponse,
-  ImageLibraryOptions,
-} from "react-native-image-picker";
-import { CloseIcon } from "../core";
+import * as ImagePicker from "expo-image-picker";
+import { CameraIcon } from "lucide-react-native";
 
-interface CustomImageLibraryOptions extends ImageLibraryOptions {
-  title: string;
-}
+export default function ImageUpload() {
+  const [file, setFile] = useState(null);
 
-interface ImagePickerComponentProps {
-  onClose: () => void;
-  onImagePicked: (response: ImagePickerResponse) => void;
-  visible: boolean;
-}
+  const [error, setError] = useState(null);
 
-export class ImagePickerComponent extends React.Component<ImagePickerComponentProps> {
-  handleChoosePhoto = () => {
-    const options: CustomImageLibraryOptions = {
-      title: "Select Image",
-      mediaType: "photo",
-    };
+  const pickImage = async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
-    ImagePicker.launchImageLibrary(options, (response: ImagePickerResponse) => {
-      this.props.onImagePicked(response);
-      this.props.onClose();
-    });
+    if (status !== "granted") {
+      Alert.alert(
+        "Permission Denied",
+        `Sorry, we need camera  
+                 roll permission to upload images.`
+      );
+    } else {
+      const result = await ImagePicker.launchImageLibraryAsync();
+
+      if (!result.canceled) {
+        setFile(result.assets);
+
+        setError(null);
+      }
+    }
   };
 
-  handleTakePhoto = () => {
-    const options: CustomImageLibraryOptions = {
-      title: "Take Photo",
-      mediaType: "photo",
-    };
-
-    ImagePicker.launchCamera(options, (response: ImagePickerResponse) => {
-      this.props.onImagePicked(response);
-      this.props.onClose();
-    });
-  };
-
-  render() {
-    return (
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={this.props.visible}
-        onRequestClose={this.props.onClose}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <TouchableOpacity
-              style={styles.closeIcon}
-              onPress={this.props.onClose}
-            >
-              <CloseIcon />
-            </TouchableOpacity>
-            <View style={{ marginBottom: 10, marginTop: 20 }}>
-              <Button title="Choose Photo" onPress={this.handleChoosePhoto} />
-            </View>
-            <View style={{ marginBottom: 10 }}>
-              <Button title="Take Photo" onPress={this.handleTakePhoto} />
-            </View>
-            <View style={{ marginBottom: 10 }}>
-              <Button title="Cancel" onPress={this.props.onClose} />
-            </View>
-          </View>
+  return (
+    <View>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.button} onPress={pickImage}>
+          <CameraIcon color="white" />
+        </TouchableOpacity>
+      </View>
+      {file ? (
+        <View style={styles.imageContainer}>
+          <Image source={{ uri: file }} style={styles.image} />
         </View>
-      </Modal>
-    );
-  }
+      ) : (
+        <Text style={styles.errorText}>{error}</Text>
+      )}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
+  header: {
+    fontSize: 20,
+    marginBottom: 16,
+  },
+  button: {
+    backgroundColor: "#262758",
+    height: 35,
+    width: 35,
+    display: "flex",
     alignItems: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent background
+    justifyContent: "center",
+    alignContent: "center",
+    borderRadius: 20,
   },
-  modalContent: {
-    backgroundColor: "white",
-    padding: 20,
-    borderRadius: 10,
+
+  imageContainer: {
+    borderRadius: 8,
+    marginBottom: 16,
+    shadowColor: "#000000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.4,
+    shadowRadius: 4,
+    elevation: 5,
   },
-  closeIcon: {
-    position: "absolute",
-    top: 10,
-    right: 10,
+  image: {
+    width: 200,
+    height: 200,
+    borderRadius: 8,
   },
-  iconImage: {
-    width: 20,
-    height: 20,
-    resizeMode: "contain",
+  errorText: {
+    color: "red",
+    marginTop: 16,
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });
