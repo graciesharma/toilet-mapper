@@ -60,7 +60,7 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
           marginBottom: 10,
         }}
       >
-        {details?.tags?.map((data, index) => (
+        {details?.tags?.split(",")?.map?.((data, index) => (
           <Badge
             mr={10}
             key={index}
@@ -76,7 +76,7 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
           </Badge>
         ))}
       </Box>
-      <Divider /> 
+      <Divider />
       <View style={{ marginTop: 10, flexDirection: "row" }}>
         <Text sx={{ fontWeight: "600", color: "$black" }}>
           Opening Hours :{" "}
@@ -146,7 +146,7 @@ export const ViewDetailsModal = (props: {
                   flex: 1,
                 }}
               >
-                <ImageCarousel images={images} />
+                <ImageCarousel images={[details.images]} />
                 <ReviewList />
               </View>
 

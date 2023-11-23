@@ -12,11 +12,8 @@ import {
 } from "./components/Menu/ToiletDetails";
 import useLocation from "./hooks/useLocation";
 import { Toilet } from "./interfaces/Toilet";
-import { toilets } from "./mock";
 import {
   ListIcon,
-  Map,
-  FilterIcon,
   MapIcon,
   MapPin,
   SearchIcon,
@@ -31,27 +28,19 @@ import ToiletListModal from "./components/ToiletListModal";
 import LinkButton from "./components/LinkButton";
 import { GOOGLE_API_KEY } from "./environment";
 import { Spinner } from "@gluestack-ui/themed";
+import ToiletService from "./services/ToiletService";
 
 export const { width, height } = Dimensions.get("window");
 
 export const HEIGHT = height;
 
-const getLatLngDetails = ({ currentLatitude, currentLongitude }) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(toilets.slice(0, 5));
-    }, 1000);
-  });
-};
 
 export default function App() {
   const [showToiletListModal, setShowToiletListModal] = useState(false);
-  const [showFilterModal, setShowFilterModal] = useState(false);
-  const [showReviewModal, setshowReviewModal] = useState(false);
-
   const [showDirections, setShowDirections] = useState(false);
   const [distance, setDistance] = useState(0);
   const [duration, setDuration] = useState(0);
+
   const mapRef = useRef<MapView>(null);
 
   const [location, setLocation] = useState(null);
@@ -65,11 +54,13 @@ export default function App() {
     const currentLatitude = location?.coords?.latitude;
     const currentLongitude = location?.coords?.longitude;
     setIsFetchingToilets(true);
-    getLatLngDetails({ currentLatitude, currentLongitude })
-      .then((value: Toilet[]) => {
+    ToiletService.getAll({ currentLatitude, currentLongitude })
+      .then((value: any) => {
         setSelectedToilets(value);
       })
-      .catch(() => {})
+      .catch((e) => {
+        console.log(e);
+      })
       .finally(() => setIsFetchingToilets(false));
   }, [location]);
 
@@ -101,6 +92,7 @@ export default function App() {
   const handleMarkerPress = (toilet: Toilet) => {
     setSelectedToilet(toilet);
   };
+
 
   const ViewListButton = React.useCallback(() => {
     return (
@@ -181,8 +173,8 @@ export default function App() {
                 )}
                 {/* Render random markers  */}
                 {!showDirections &&
-                  selectedToilets?.map((marker, index) => (
-                    <Marker
+                  selectedToilets?.map?.((marker, index) => (
+                    marker.coords &&<Marker
                       key={index}
                       coordinate={marker?.coords}
                       title={`Marker ${index + 1}`}

@@ -27,6 +27,7 @@
     "@legendapp/motion": "latest",
     "@types/react": "~18.0.27",
     "add": "^2.0.6",
+    "axios": "^1.6.2",
     "expo": "~48.0.18",
     "expo-constants": "~14.2.1",
     "expo-device": "~5.2.1",
