@@ -38,7 +38,7 @@ const ACCESSIBILITY = [
   {
     id: "gender",
     value: "gender neutral",
-    label: "Gender neutral Toilet",
+    label: "Gender neutral ",
   },
   {
     id: "babyFeeding",
@@ -58,7 +58,17 @@ const ACCESSIBILITY = [
   {
     id: "senior",
     value: "seniorFriendly",
-    label: "Senior friendly toilet",
+    label: "Senior friendly ",
+  },
+  {
+    id: "commercial",
+    value: "commercial",
+    label: "Commercial building",
+  },
+  {
+    id: "government",
+    value: "government",
+    label: "Government building",
   },
 ];
 
@@ -90,59 +100,6 @@ const Filter = ({ visible, onClose }: IProps) => {
       <Divider />
 
       <View style={{ padding: 20 }}>
-        <Box sx={{ marginBottom: 20 }}>
-          <Text sx={{ mb: 10, fontSize: 20, fontWeight: "$bold" }}>
-            Proximity Within
-          </Text>
-          <CheckboxGroup
-            value={values}
-            onChange={(keys) => {
-              setValues(keys);
-            }}
-          >
-            {PROXIMITY_WITHIN.map((value) => (
-              <Checkbox
-                key={value.id}
-                value={value.value}
-                isInvalid={false}
-                isDisabled={false}
-                aria-label="Select or deselect the checkbox"
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "row",
-                  borderWidth: 1,
-                  padding: 10,
-                  borderRadius: 4,
-                  borderColor: "#d1d6e5",
-                  mb: 10,
-                }}
-              >
-                <CheckboxIndicator
-                  mr="$2"
-                  sx={{
-                    height: 20,
-                    width: 20,
-                    borderWidth: 1,
-                    borderRadius: 4,
-                  }}
-                >
-                  <CheckboxIcon
-                    as={CheckIcon}
-                    sx={{
-                      backgroundColor: "#23256A",
-                      color: "white",
-                      marginRight: 20,
-                    }}
-                  />
-                </CheckboxIndicator>
-                <CheckboxLabel sx={{ color: "#0C121D" }}>
-                  {value.label}
-                </CheckboxLabel>
-              </Checkbox>
-            ))}
-          </CheckboxGroup>
-        </Box>
         <Box>
           <Text sx={{ mb: 10, fontSize: 20, fontWeight: "$bold" }}>
             Accesiblity Features

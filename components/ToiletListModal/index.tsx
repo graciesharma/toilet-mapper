@@ -95,7 +95,7 @@ const ToiletListModal: React.FC<ToiletListModalProps> = ({
                 <Text style={styles.name}>{item.name}</Text>
                 <Text style={styles.address}>{item.address}</Text>
                 <Text style={styles.reviews}>
-                  Reviews: {item.reviews.length}
+                  Reviews: {item?.reviews?.length}
                 </Text>
               </View>
               <View>
