@@ -29,6 +29,7 @@ import LinkButton from "./components/LinkButton";
 import { GOOGLE_API_KEY } from "./environment";
 import { Spinner } from "@gluestack-ui/themed";
 import ToiletService from "./services/ToiletService";
+import { ILLMap } from "./illustration";
 
 export const { width, height } = Dimensions.get("window");
 
@@ -180,7 +181,7 @@ export default function App() {
                       title={`Marker ${index + 1}`}
                       onPress={() => handleMarkerPress(marker)}
                     >
-                      <Icon as={ToiletMarker} />
+                      <Icon as={ILLMap} />
                     </Marker>
                   ))}
                 {showDirections && (
