@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://192.168.101.12:3004/toilets";
+const API_URL = "http://192.168.101.5:3004/toilets";
 
 class ToiletService {
   async getAll({
