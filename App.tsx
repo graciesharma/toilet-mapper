@@ -27,17 +27,19 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import ToiletListModal from "./components/ToiletListModal";
 import LinkButton from "./components/LinkButton";
 import { GOOGLE_API_KEY } from "./environment";
-import { Spinner } from "@gluestack-ui/themed";
+import { AddIcon, Spinner } from "@gluestack-ui/themed";
 import ToiletService from "./services/ToiletService";
 import { ILLMap } from "./illustration";
+import AddToiletModal from "./components/AddToiletModal";
 
 export const { width, height } = Dimensions.get("window");
 
 export const HEIGHT = height;
 
-
 export default function App() {
   const [showToiletListModal, setShowToiletListModal] = useState(false);
+  const [showAddToiletModal, setshowAddToiletModal] = useState(false);
+
   const [showDirections, setShowDirections] = useState(false);
   const [distance, setDistance] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -94,7 +96,6 @@ export default function App() {
     setSelectedToilet(toilet);
   };
 
-
   const ViewListButton = React.useCallback(() => {
     return (
       <TouchableOpacity
@@ -102,6 +103,17 @@ export default function App() {
         onPress={() => setShowToiletListModal(true)}
       >
         <Icon as={ListIcon} size="md" color="white" />
+      </TouchableOpacity>
+    );
+  }, []);
+
+  const ToiletAddButton = React.useCallback(() => {
+    return (
+      <TouchableOpacity
+        style={{ ...styles.openModalButton, marginLeft: "auto" }}
+        onPress={() => setshowAddToiletModal(true)}
+      >
+        <Icon as={AddIcon} size="md" color="white" />
       </TouchableOpacity>
     );
   }, []);
@@ -174,16 +186,19 @@ export default function App() {
                 )}
                 {/* Render random markers  */}
                 {!showDirections &&
-                  selectedToilets?.map?.((marker, index) => (
-                    marker.coords &&<Marker
-                      key={index}
-                      coordinate={marker?.coords}
-                      title={`Marker ${index + 1}`}
-                      onPress={() => handleMarkerPress(marker)}
-                    >
-                      <Icon as={ILLMap} />
-                    </Marker>
-                  ))}
+                  selectedToilets?.map?.(
+                    (marker, index) =>
+                      marker.coords && (
+                        <Marker
+                          key={index}
+                          coordinate={marker?.coords}
+                          title={`Marker ${index + 1}`}
+                          onPress={() => handleMarkerPress(marker)}
+                        >
+                          <Icon as={ILLMap} />
+                        </Marker>
+                      )
+                  )}
                 {showDirections && (
                   <Marker coordinate={selectedToilet?.coords}>
                     <Icon as={MapPin} />
@@ -237,6 +252,7 @@ export default function App() {
             {selectedToilets?.length > 0 && !showDirections && (
               <>
                 <ViewListButton />
+                <ToiletAddButton />
               </>
             )}
 
@@ -269,6 +285,10 @@ export default function App() {
               setShowToiletListModal(false);
               setSelectedToilet(toilet);
             }}
+          />
+          <AddToiletModal
+            visible={showAddToiletModal}
+            onClose={() => setshowAddToiletModal(false)}
           />
         </View>
       </GluestackUIProvider>
