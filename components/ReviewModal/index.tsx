@@ -125,7 +125,7 @@ const Review = ({ visible, onClose }: IProps) => {
           padding: 15,
           display: "flex",
           justifyContent: "flex-end",
-          marginTop: 8,
+          marginTop: "auto",
           width: "100%",
           gap: 25,
           flexDirection: "row",

@@ -82,7 +82,7 @@ export const PrimaryDetails = (details: Partial<Toilet>) => {
           Opening Hours :{" "}
         </Text>
         <Text>
-          {details?.openingTime} - {details.closingTime}
+          {details?.openingTime} am - {details.closingTime} pm
         </Text>
       </View>
     </React.Fragment>
