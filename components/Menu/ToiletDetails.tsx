@@ -147,7 +147,7 @@ export const ViewDetailsModal = (props: {
                 }}
               >
                 <ImageCarousel images={[details.images]} />
-                <ReviewList />
+                <ReviewList toiletId={details.id} />
               </View>
 
               <Button

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://192.168.101.2:3004/toilets";
+const API_URL = "http://192.168.43.47:3004/toilets";
 
 class ToiletService {
   async getAll({
@@ -32,6 +32,10 @@ class ToiletService {
 
   addReview(id, review) {
     return axios.post(`${API_URL}/${id}/reviews`, review);
+  }
+
+  getReview(id) {
+    return axios.get(`${API_URL}/${id}/reviews`);
   }
 
   deleteReview(id, user) {

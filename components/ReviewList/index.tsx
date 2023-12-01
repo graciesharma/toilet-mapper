@@ -9,21 +9,38 @@ import {
 import { AirbnbRating } from "react-native-ratings"; // Import AirbnbRating from react-native-ratings
 import { AddIcon, Button, EditIcon, Icon } from "../core";
 import Review from "../ReviewModal";
+import ToiletService from "../../services/ToiletService";
 
-// Sample data for reviews
-const reviewsData = [
-  {
-    text: "Decent restroom, but could be cleaner. 3 stars from me.",
-    rating: 3,
-  },
-  {
-    text: "Terrible experience, never going back. 1 star.",
-    rating: 1,
-  },
-];
+interface IProps {
+  toiletId: number;
+  onSubmit: any;
+}
 
-const ReviewList: React.FC = () => {
+const ReviewList: React.FC = (props: IProps) => {
   const [showReviewModal, setshowReviewModal] = useState(false);
+  const [reviewsData, setReviewsData] = useState([]);
+
+  const onload = () => {
+    ToiletService.getReview(props.toiletId).then((data) =>
+      setReviewsData(data.data)
+    );
+  };
+
+  React.useEffect(() => {
+    onload();
+  }, []);
+
+  const handleSubmit = (data: any) => {
+    ToiletService.addReview(props.toiletId, data)
+      .then((value) => {
+        setshowReviewModal(false);
+        onload();
+      })
+      .catch(() => {
+        console.log("error occured");
+        setshowReviewModal(false);
+      });
+  };
 
   const ViewReviewModal = React.useCallback(() => {
     return (
@@ -52,6 +69,7 @@ const ReviewList: React.FC = () => {
         <Review
           visible={showReviewModal}
           onClose={() => setshowReviewModal(false)}
+          onSubmit={handleSubmit}
         />
       </View>
 
@@ -60,7 +78,31 @@ const ReviewList: React.FC = () => {
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
           <View style={styles.reviewContainer}>
-            <Text>{item.text}</Text>
+            <View style={{ display: "flex", flexDirection: "column" }}>
+              <Text style={{ fontWeight: "500", fontSize: 12 }}>
+                {item.fullName}
+              </Text>
+              <Text style={{ fontWeight: "400", fontSize: 10 }}>
+                {item.email}
+              </Text>
+            </View>
+            <Text
+              style={{
+                fontWeight: "500",
+                fontSize: 12,
+                marginTop: 10,
+                marginBottom: 10,
+              }}
+            >
+              {item.description}
+            </Text>
+            <AirbnbRating
+              count={5}
+              defaultRating={item.rating}
+              showRating={false}
+              selectedColor="#FAC712"
+              size={10}
+            />
           </View>
         )}
       />

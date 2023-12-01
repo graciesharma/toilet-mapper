@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, TouchableOpacity, View, StatusBar } from "react-native";
 import {
   Box,
@@ -13,9 +13,36 @@ import { CloseIcon, Divider } from "../core";
 interface IProps {
   visible: boolean;
   onClose: () => void;
+  onSubmit: any;
 }
 
-const Review = ({ visible, onClose }: IProps) => {
+const Review = ({ visible, onClose, onSubmit }: IProps) => {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [rating, setRating] = useState(0);
+  const [description, setDescription] = useState("");
+
+  const handleFullNameChange = (text: string) => {
+    setFullName(text);
+  };
+
+  const handleEmailAddress = (text: string) => {
+    setEmail(text);
+  };
+
+  const handleToiletDescription = (text: string) => {
+    setDescription(text);
+  };
+
+  const handleSubmit = () => {
+    onSubmit({
+      fullName,
+      email,
+      rating,
+      description,
+    });
+  };
+
   return (
     <Modal
       visible={visible}
@@ -73,7 +100,10 @@ const Review = ({ visible, onClose }: IProps) => {
           margin: 15,
         }}
       >
-        <TextareaInput placeholder="Full name" />
+        <TextareaInput
+          placeholder="Full name"
+          onChangeText={handleFullNameChange}
+        />
       </Textarea>
 
       <Textarea
@@ -88,7 +118,10 @@ const Review = ({ visible, onClose }: IProps) => {
           margin: 15,
         }}
       >
-        <TextareaInput placeholder="Contact email address" />
+        <TextareaInput
+          placeholder="Contact email address"
+          onChangeText={handleEmailAddress}
+        />
       </Textarea>
 
       <Text sx={{ m: 15, fontSize: 20, fontWeight: "$bold" }}>
@@ -102,6 +135,7 @@ const Review = ({ visible, onClose }: IProps) => {
           showRating={false}
           selectedColor="#FAC712"
           size={30}
+          onFinishRating={(value) => setRating(value)}
         />
       </View>
 
@@ -117,7 +151,10 @@ const Review = ({ visible, onClose }: IProps) => {
           margin: 15,
         }}
       >
-        <TextareaInput placeholder="Add something about your experience" />
+        <TextareaInput
+          placeholder="Add something about your experience"
+          onChangeText={handleToiletDescription}
+        />
       </Textarea>
 
       <View
@@ -157,6 +194,7 @@ const Review = ({ visible, onClose }: IProps) => {
             width: 100,
             borderRadius: 20,
           }}
+          onPress={handleSubmit}
         >
           <Text
             style={{

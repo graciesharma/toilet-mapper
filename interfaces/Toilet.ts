@@ -1,5 +1,6 @@
 export interface Toilet {
   name: string;
+  id: number;
   address: string;
   tags: string;
   description: string;

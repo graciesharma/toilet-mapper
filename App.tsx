@@ -26,11 +26,11 @@ import ActionSheet from "./components/ActionSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import ToiletListModal from "./components/ToiletListModal";
 import LinkButton from "./components/LinkButton";
-import { GOOGLE_API_KEY } from "./environment";
 import { AddIcon, Spinner } from "@gluestack-ui/themed";
 import ToiletService from "./services/ToiletService";
 import { ILLMap } from "./illustration";
 import AddToiletModal from "./components/AddToiletModal";
+import { GOOGLE_API_KEY } from "./environment";
 
 export const { width, height } = Dimensions.get("window");
 
